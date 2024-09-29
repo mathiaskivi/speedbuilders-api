@@ -5,15 +5,24 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Called when a player recreates the displayed build.
+ */
 public class PlayerPerfectEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     private final Player player;
-    private final float timeInSeconds;
+    private final float time;
 
-    public PlayerPerfectEvent(Player player, float timeInSeconds) {
+    /**
+     * Constructs a new PlayerPerfectEvent.
+     *
+     * @param player The player who recreated the displayed build.
+     * @param time The time spent on recreating the displayed build in seconds.
+     */
+    public PlayerPerfectEvent(Player player, float time) {
         this.player = player;
-        this.timeInSeconds = timeInSeconds;
+        this.time = time;
     }
 
     @Override
@@ -21,11 +30,21 @@ public class PlayerPerfectEvent extends Event {
         return handlers;
     }
 
+    /**
+     * Gets the player who recreated the displayed build.
+     *
+     * @return The player who recreated the displayed build.
+     */
     public @NotNull Player getPlayer() {
         return player;
     }
 
-    public float getTimeInSeconds() {
-        return timeInSeconds;
+    /**
+     * Gets the time spent on recreating the displayed build in seconds.
+     *
+     * @return The time spent on recreating the displayed build in seconds.
+     */
+    public float getTime() {
+        return time;
     }
 }
